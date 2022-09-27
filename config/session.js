@@ -21,7 +21,7 @@ function createSessionStore() {
   const MongoDBStore = mongoDbStore(expressSession);
 
   const store = new MongoDBStore({
-    uri: mongodbUrl,
+    uri: 'mongodb+srv://default:testers@cluster0.meakhp4.mongodb.net/?retryWrites=true&w=majority',
     databaseName: 'online-shop',
     collection: 'sessions'
   });
