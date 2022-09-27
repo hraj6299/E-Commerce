@@ -1,11 +1,27 @@
 const expressSession = require('express-session');
 const mongoDbStore = require('connect-mongodb-session');
 
+let mongodbUrl='mongodb://0.0.0.0:27017';
+
+if(process.env.MONGODB_URL){
+  mongodbUrl=process.env.MONGODB_URL;
+}
+// function createSessionStore() {
+//   const MongoDBStore = mongoDbStore(expressSession);
+
+//   const store = new MongoDBStore({
+//     uri: 'mongodb://0.0.0.0:27017',
+//     databaseName: 'online-shop',
+//     collection: 'sessions'
+//   });
+
+//   return store;
+// }
 function createSessionStore() {
   const MongoDBStore = mongoDbStore(expressSession);
 
   const store = new MongoDBStore({
-    uri: 'mongodb://0.0.0.0:27017',
+    uri: mongodbUrl,
     databaseName: 'online-shop',
     collection: 'sessions'
   });
